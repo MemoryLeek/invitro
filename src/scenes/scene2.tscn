@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://xna20n42rpoy"]
+
+[ext_resource type="Script" path="res://src/Scene.gd" id="1_fdktf"]
+
+[sub_resource type="Environment" id="Environment_v13nn"]
+background_mode = 1
+background_color = Color(0, 1, 0, 1)
+
+[node name="Scene" type="Node3D"]
+script = ExtResource("1_fdktf")
+length = 7.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v13nn")

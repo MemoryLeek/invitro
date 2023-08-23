@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://4gvt6qajh33y"]
+[gd_scene load_steps=5 format=3 uid="uid://4gvt6qajh33y"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_hhstn"]
+[ext_resource type="Script" path="res://src/Tobe Scene.gd" id="2_vyp3i"]
+[ext_resource type="PackedScene" uid="uid://hu45wr3wb5ok" path="res://src/scenes/scene1.tscn" id="3_gbimd"]
+[ext_resource type="PackedScene" uid="uid://xna20n42rpoy" path="res://src/scenes/scene2.tscn" id="4_7qk2n"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_hhstn")
+
+[node name="Tobe Scene" type="Node3D" parent="."]
+script = ExtResource("2_vyp3i")
+scenes = Array[PackedScene]([ExtResource("3_gbimd"), ExtResource("4_7qk2n")])
