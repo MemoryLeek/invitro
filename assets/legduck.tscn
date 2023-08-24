@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://titapt8xkn1k"]
+
+[ext_resource type="PackedScene" uid="uid://cjsl0oaoc8dqj" path="res://assets/legduck.glb" id="1_0qg81"]
+[ext_resource type="Material" uid="uid://boe1omcolmfvr" path="res://assets/skin.material" id="2_8l3kb"]
+[ext_resource type="Shader" path="res://src/censored.gdshader" id="2_h4nbx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6rvn"]
+albedo_color = Color(0.588235, 0.294118, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_re160"]
+render_priority = 0
+shader = ExtResource("2_h4nbx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1rhcn"]
+material = SubResource("ShaderMaterial_re160")
+size = Vector2(1.5, 4)
+
+[node name="legduck" instance=ExtResource("1_0qg81")]
+
+[node name="Beefy Arm Final" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8l3kb")
+
+[node name="Legs" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_8l3kb")
+
+[node name="Rubber Duck" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_o6rvn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -0.183265, -0.983064, 0, 0.983064, -0.183265, 0, 13.3209, 1.99385)
+mesh = SubResource("PlaneMesh_1rhcn")

@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctju5342hoggh"]
+
+[ext_resource type="Script" path="res://src/Scene.gd" id="1_4q173"]
+[ext_resource type="PackedScene" uid="uid://pn7fh6r7pfh1" path="res://assets/goldduck.tscn" id="2_euygb"]
+
+[sub_resource type="Environment" id="Environment_w34ex"]
+glow_enabled = true
+glow_blend_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjefp"]
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 1.39
+
+[sub_resource type="TextMesh" id="TextMesh_6yf0v"]
+material = SubResource("StandardMaterial3D_pjefp")
+text = "AH!            Competitions!            Of course..            We will have those as well, including our much loved surprise compos."
+depth = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pn0v1"]
+albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pxisn"]
+material = SubResource("StandardMaterial3D_pn0v1")
+flip_faces = true
+size = Vector3(25, 10, 10)
+
+[sub_resource type="Animation" id="Animation_qf1vx"]
+resource_name = "Movement"
+length = 6.85
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-5.15278, 0.132024, 0.505685), Vector3(4.58156, 0.132024, 0.505685)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Duck:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 2, 2.8, 3.6, 4.8, 6, 6.4, 6.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.892863, 1.90091, 0.632632), Vector3(1.07666, -0.953775, -0.835846), Vector3(0.867304, 0.015021, -0.462698), Vector3(0.703072, 1.22217, 0.459853), Vector3(1.33511, 1.18349, 0.606444), Vector3(0.703072, 1.22217, 0.459853), Vector3(0.613682, -0.290896, -0.199222), Vector3(0.47505, -0.576388, -0.260405), Vector3(0.336417, -0.755729, -0.321588)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/Duck:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.8, 6, 6.4, 6.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.123061, 0.0888708, -0.397973), Vector3(-0.123061, 0.0888708, -0.397973), Vector3(-0.0557432, 0.0498735, -0.328795), Vector3(-0.012584, 0.0252935, -0.278703), Vector3(0.00808716, -0.0372734, -0.257951)]
+}
+
+[sub_resource type="Animation" id="Animation_c3b51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.58156, 0.132024, 0.505685)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Duck:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.892863, 1.65353, 0.632632)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/Duck:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.123061, 0.0888708, -0.397973)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3c6qu"]
+_data = {
+"Movement": SubResource("Animation_qf1vx"),
+"RESET": SubResource("Animation_c3b51")
+}
+
+[node name="Scene" type="Node3D"]
+script = ExtResource("1_4q173")
+length = 6.85
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w34ex")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.793672, 0, -0.608346, 0, 1, 0, 0.608346, 0, 0.793672, 4.58156, 0.132024, 0.505685)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(0.966493, 0, -0.256694, 0, 1, 0, 0.256694, 0, 0.966493, -0.137956, 0, 0.105742)
+light_color = Color(0.294118, 0.552941, 0.678431, 1)
+light_energy = 0.808
+spot_range = 2.842
+spot_angle = 45.96
+
+[node name="Duck" parent="Camera3D" instance=ExtResource("2_euygb")]
+transform = Transform3D(0.0784598, 0.134969, 0.125007, 0.0741664, 0.10116, -0.155773, -0.168353, 0.107467, -0.0103657, -0.123061, 0.0888708, -0.397973)
+
+[node name="Text" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0580369)
+mesh = SubResource("TextMesh_6yf0v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+mesh = SubResource("BoxMesh_pxisn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Movement"
+libraries = {
+"": SubResource("AnimationLibrary_3c6qu")
+}

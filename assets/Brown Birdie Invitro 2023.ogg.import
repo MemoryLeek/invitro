@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dcr6jw2771c38"
+path="res://.godot/imported/Brown Birdie Invitro 2023.ogg-813c4b9db5d765610aaeca4912c3080f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Brown Birdie Invitro 2023.ogg"
+dest_files=["res://.godot/imported/Brown Birdie Invitro 2023.ogg-813c4b9db5d765610aaeca4912c3080f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,13 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://4gvt6qajh33y"]
+[gd_scene load_steps=9 format=3 uid="uid://4gvt6qajh33y"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_hhstn"]
+[ext_resource type="AudioStream" uid="uid://dcr6jw2771c38" path="res://assets/Brown Birdie Invitro 2023.ogg" id="2_0s5qj"]
 [ext_resource type="Script" path="res://src/Tobe Scene.gd" id="2_vyp3i"]
 [ext_resource type="PackedScene" uid="uid://hu45wr3wb5ok" path="res://src/scenes/scene1.tscn" id="3_gbimd"]
 [ext_resource type="PackedScene" uid="uid://xna20n42rpoy" path="res://src/scenes/scene2.tscn" id="4_7qk2n"]
+[ext_resource type="PackedScene" uid="uid://d5v4ocb15x8e" path="res://src/scenes/scene3.tscn" id="6_64tb8"]
+[ext_resource type="PackedScene" uid="uid://ctju5342hoggh" path="res://src/scenes/scene4.tscn" id="7_xa1w2"]
+[ext_resource type="PackedScene" uid="uid://ceevnijfrx3pk" path="res://src/scenes/scene5.tscn" id="8_381qk"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_hhstn")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0s5qj")
+autoplay = true
+
 [node name="Tobe Scene" type="Node3D" parent="."]
 script = ExtResource("2_vyp3i")
-scenes = Array[PackedScene]([ExtResource("3_gbimd"), ExtResource("4_7qk2n")])
+scenes = Array[PackedScene]([ExtResource("3_gbimd"), ExtResource("4_7qk2n"), ExtResource("6_64tb8"), ExtResource("7_xa1w2"), ExtResource("8_381qk")])

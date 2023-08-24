@@ -1,0 +1,349 @@
+[gd_scene load_steps=18 format=3 uid="uid://ceevnijfrx3pk"]
+
+[ext_resource type="Script" path="res://src/Scene.gd" id="1_2gwiy"]
+[ext_resource type="PackedScene" uid="uid://pn7fh6r7pfh1" path="res://assets/goldduck.tscn" id="2_0fx4p"]
+[ext_resource type="PackedScene" uid="uid://titapt8xkn1k" path="res://assets/legduck.tscn" id="3_tqn5y"]
+
+[sub_resource type="Environment" id="Environment_dgga1"]
+glow_enabled = true
+glow_strength = 0.7
+glow_bloom = 0.2
+glow_blend_mode = 0
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbhw0"]
+albedo_color = Color(0.2, 0.101961, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jfaay"]
+material = SubResource("StandardMaterial3D_nbhw0")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fhwf"]
+albedo_color = Color(0.560784, 0.32549, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_hu6dy"]
+material = SubResource("StandardMaterial3D_3fhwf")
+text = "Brown Birdie"
+depth = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onlqa"]
+
+[sub_resource type="TextMesh" id="TextMesh_fpaxc"]
+material = SubResource("StandardMaterial3D_onlqa")
+text = "6 – 8 October 2023"
+font_size = 10
+depth = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp5vy"]
+
+[sub_resource type="TextMesh" id="TextMesh_kcfwx"]
+material = SubResource("StandardMaterial3D_jp5vy")
+text = "Delsbo
+memoryleek.com"
+font_size = 8
+depth = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ev01f"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_dof3j"]
+material = SubResource("StandardMaterial3D_ev01f")
+text = "And as always..
+The real party is in
+the wood-fired sauna."
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_ukwe6"]
+resource_name = "Movement"
+length = 13.71
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legduck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.4, -0.683, 0.332), Vector3(0.93535, -0.68312, 0.331963)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title/SpotLight3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title/SpotLight3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("legduck/SpotLight3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 11.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Duck:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4, 6.5, 7.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.773884, -2.14517, 0.557788), Vector3(-0.773884, -0.0463212, 0.557788), Vector3(-0.773884, -0.350701, 0.557788)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Duck:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4, 6.5, 7.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.51716, 0), Vector3(0, 1.28011, 0), Vector3(0, 1.02454, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Duck/SpotLight3D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2, 11),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:glow_strength")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.7, 0.4]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:fog_enabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 13),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_37v0e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legduck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.01073, -0.68312, 0.331963)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title/SpotLight3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title/SpotLight3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("legduck/SpotLight3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Duck:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.773884, -0.350701, 0.557788)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Duck:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.28011, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Duck/SpotLight3D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:glow_strength")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.7]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:fog_enabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cu4l"]
+_data = {
+"Movement": SubResource("Animation_ukwe6"),
+"RESET": SubResource("Animation_37v0e")
+}
+
+[node name="Scene" type="Node3D"]
+script = ExtResource("1_2gwiy")
+length = 13.71
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dgga1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.37682)
+fov = 45.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+visible = false
+
+[node name="Backdrop" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_jfaay")
+
+[node name="Title" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68648, 0)
+mesh = SubResource("TextMesh_hu6dy")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Title"]
+transform = Transform3D(0.859205, -0.272521, -0.433013, 0.480509, 0.720493, 0.5, 0.175722, -0.637669, 0.75, -0.496594, 0.174439, 0.232768)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Title"]
+transform = Transform3D(0.581782, -0.688498, 0.433013, 0.480509, 0.720493, 0.5, -0.656232, -0.0828245, 0.75, 0.497, 0.174, 0.233163)
+visible = false
+
+[node name="Date" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.559471, 0)
+mesh = SubResource("TextMesh_fpaxc")
+
+[node name="Place" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.404174, 0)
+mesh = SubResource("TextMesh_kcfwx")
+
+[node name="Duck" parent="." instance=ExtResource("2_0fx4p")]
+transform = Transform3D(0.143304, 0, 0.479024, 0, 0.5, 0, -0.479024, 0, 0.143304, -0.773884, -0.350701, 0.557788)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Duck"]
+transform = Transform3D(1.31365, 0.681755, -1.34519, -0.335338, 1.87136, 0.620945, 1.47033, -0.182305, 1.34346, -1.97512, 1.33446, 2.11558)
+visible = false
+spot_range = 2.852
+spot_angle = 21.15
+
+[node name="legduck" parent="." instance=ExtResource("3_tqn5y")]
+transform = Transform3D(0.0400345, 0, -0.029954, 0, 0.05, 0, 0.029954, 0, 0.0400345, 2.01073, -0.68312, 0.331963)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="legduck"]
+transform = Transform3D(11.7056, 14.8604, 6.49204, -10.6241, 13.0766, -10.7764, -12.2518, 2.85865, 15.5474, 6.21329, 1.46614, 15.4788)
+light_energy = 0.24
+spot_range = 2.415
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="legduck"]
+transform = Transform3D(0.995747, 0, 0.0921117, 0, 1, 0, -0.0921113, 0, 0.995748, 0.953964, 16.3632, 4.72571)
+mesh = SubResource("TextMesh_dof3j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Movement"
+libraries = {
+"": SubResource("AnimationLibrary_2cu4l")
+}

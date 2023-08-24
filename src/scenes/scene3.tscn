@@ -1,0 +1,156 @@
+[gd_scene load_steps=11 format=3 uid="uid://d5v4ocb15x8e"]
+
+[ext_resource type="Script" path="res://src/Scene.gd" id="1_df5pw"]
+[ext_resource type="Shader" path="res://src/sinscroller.gdshader" id="2_kc8f4"]
+[ext_resource type="PackedScene" uid="uid://titapt8xkn1k" path="res://assets/legduck.tscn" id="3_bk6xn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fi6x"]
+render_priority = 0
+shader = ExtResource("2_kc8f4")
+
+[sub_resource type="TextMesh" id="TextMesh_5oqbs"]
+material = SubResource("ShaderMaterial_7fi6x")
+text = "We offer liqour of questionable legality as well as various foods, both traditional and less so."
+depth = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amr4g"]
+albedo_color = Color(0.309804, 0.309804, 0.309804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ugrbt"]
+material = SubResource("StandardMaterial3D_amr4g")
+flip_faces = true
+size = Vector3(100, 100, 100)
+
+[sub_resource type="Animation" id="Animation_8ivp7"]
+resource_name = "Movement"
+length = 6.85
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boom:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5.4, 6.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.76499, 17.997), Vector3(2.08165e-12, 8.092, 11), Vector3(2.08165e-12, 29.6302, 2.08165e-12), Vector3(2.08165e-12, 28.5037, 2.08165e-12), Vector3(-1.005, 9.988, 3.592)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boom:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5.4, 6.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.138806, 0, 0), Vector3(0.515396, 0.218707, 1.10539e-16), Vector3(0.515396, 0.909701, -5.99248e-09), Vector3(-0.54592, 0.650213, -0.467148), Vector3(0.69456, -0.429852, -0.305866)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boom/Text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.4, 6.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(7, 1.75, 12), Vector3(2.08165e-12, 1.75, 12), Vector3(-7, 1.75, 12)]
+}
+
+[sub_resource type="Animation" id="Animation_bivrq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.76499, 17.997)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boom:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.138806, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boom/Text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5, 2.08165e-12, 14)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hie8f"]
+_data = {
+"Movement": SubResource("Animation_8ivp7"),
+"RESET": SubResource("Animation_bivrq")
+}
+
+[node name="Scene" type="Node3D"]
+script = ExtResource("1_df5pw")
+length = 6.85
+
+[node name="Boom" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.990382, -0.138361, 0, 0.138361, 0.990382, 0, 2.76499, 17.997)
+
+[node name="Text" type="MeshInstance3D" parent="Boom"]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 5, 2.08165e-12, 14)
+mesh = SubResource("TextMesh_5oqbs")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="Boom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 15)
+
+[node name="legduck" parent="." instance=ExtResource("3_bk6xn")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 41)
+mesh = SubResource("BoxMesh_ugrbt")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, -0.5, 3.28021e-16, 0.707107, -0.707107, 0.707107, 0.5, 0.5, -8, 0, 8)
+light_color = Color(0.588235, 0.294118, 0, 1)
+light_energy = 100.0
+shadow_enabled = true
+spot_range = 37.581
+spot_angle = 50.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, 0.5, 7.11634e-16, 0.707107, -0.707107, -0.707107, 0.5, 0.5, 8, 0, 8)
+light_color = Color(0.588235, 0.294118, 0, 1)
+light_energy = 100.0
+shadow_enabled = true
+spot_range = 37.581
+spot_angle = 50.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.90266, 0.430354, 0, -0.430354, 0.90266, 0, 29, 10)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 27.86
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Movement"
+libraries = {
+"": SubResource("AnimationLibrary_hie8f")
+}

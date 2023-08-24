@@ -1,16 +1,114 @@
-[gd_scene load_steps=3 format=3 uid="uid://xna20n42rpoy"]
+[gd_scene load_steps=11 format=3 uid="uid://xna20n42rpoy"]
 
 [ext_resource type="Script" path="res://src/Scene.gd" id="1_fdktf"]
+[ext_resource type="Shader" path="res://src/scroller.gdshader" id="2_7c67d"]
+[ext_resource type="PackedScene" uid="uid://c8ecnudy0ljo1" path="res://assets/duck.tscn" id="2_jk76b"]
 
-[sub_resource type="Environment" id="Environment_v13nn"]
-background_mode = 1
-background_color = Color(0, 1, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_my0p3"]
+render_priority = 0
+shader = ExtResource("2_7c67d")
+
+[sub_resource type="TextMesh" id="TextMesh_qhhdy"]
+material = SubResource("ShaderMaterial_my0p3")
+text = "It is time again, to spread your wings, and venture up to Hälsingland for a weekend of demoscene festivities!"
+depth = 0.02
+
+[sub_resource type="Animation" id="Animation_fvudg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.472245, -6.28749, 2.29211)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text #1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.01563, 0, 0.311787)]
+}
+
+[sub_resource type="Animation" id="Animation_rj2pp"]
+resource_name = "Scroller"
+length = 6.85
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 6.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.472245, -6.28749, 2.29211), Vector3(-0.472245, -4.11264, 2.29211), Vector3(-0.472245, 4.22434, 2.29211)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text #1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.01563, 0, 0.311787), Vector3(-2.016, 2.08165e-12, 0.312)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e2rlg"]
+_data = {
+"RESET": SubResource("Animation_fvudg"),
+"Scroller": SubResource("Animation_rj2pp")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyko3"]
+albedo_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gjqr4"]
+material = SubResource("StandardMaterial3D_dyko3")
+size = Vector2(10, 20)
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_fdktf")
-length = 7.0
+length = 6.85
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.998483, -0.0439382, -0.0331812, 0.0312342, 0.9483, -0.315834, 0.0453429, 0.314318, 0.948234, -0.472245, -6.28749, 2.29211)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_v13nn")
+[node name="Duck" parent="Camera3D" instance=ExtResource("2_jk76b")]
+transform = Transform3D(0.996468, 0.0676589, 0.049751, -0.0296011, 0.837348, -0.545868, -0.0785918, 0.542467, 0.836392, -0.06854, -0.0729647, -1.96587)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(0.987296, 0.103416, 0.120631, -0.0959099, 0.993169, -0.0664641, -0.126681, 0.0540499, 0.99047, 0.403961, 0.0845233, -0.0473332)
+light_color = Color(0.588235, 0.294118, 0, 1)
+light_energy = 9.609
+light_size = 0.223
+shadow_enabled = true
+
+[node name="Text #1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.429282, -0.903171, 0, 0.903171, 0.429282, 0, 0, 0, 1, 2.01563, 0, 0.311787)
+mesh = SubResource("TextMesh_qhhdy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e2rlg")
+}
+
+[node name="Backplane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_gjqr4")
+
+[connection signal="ready" from="AnimationPlayer" to="AnimationPlayer" method="play" binds= ["Scroller"]]
