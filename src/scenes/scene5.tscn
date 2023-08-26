@@ -322,7 +322,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.404174, 0)
 mesh = SubResource("TextMesh_kcfwx")
 
 [node name="Duck" parent="." instance=ExtResource("2_0fx4p")]
-transform = Transform3D(0.143304, 0, 0.479024, 0, 0.5, 0, -0.479024, 0, 0.143304, -0.773884, -0.350701, 0.557788)
+transform = Transform3D(0.143305, 0, 0.479024, 0, 0.5, 0, -0.479024, 0, 0.143305, -0.773884, -0.350701, 0.557788)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Duck"]
 transform = Transform3D(1.31365, 0.681755, -1.34519, -0.335338, 1.87136, 0.620945, 1.47033, -0.182305, 1.34346, -1.97512, 1.33446, 2.11558)
