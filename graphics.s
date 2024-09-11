@@ -1,25 +1,29 @@
 .segment "ZEROPAGE"
-.exportzp scroll_x, scroll_y, ppu_write_ptr
+.exportzp scroll_x, scroll_y, ppu_write_ptr, ppu_write_cnt
 scroll_x: .res 1
 scroll_y: .res 1
 ppu_write_ptr: .res 2
+ppu_write_cnt: .res 2
 
 .segment "CODE"
 .export ppu_write
-; Takes the low byte of the PPU address in X and the high byte in Y
-; and the number of bytes to write in A.
-; Writes the bytes from the address in ppu_write_ptr to the PPU.
+; Takes the low byte of the PPU address in X and the high byte in Y.
+; Writes ppu_write_cnt bytes from the address in ppu_write_ptr to the PPU.
 ppu_write:
     bit $2002
     sty $2006
     stx $2006
-    tax ; X now holds number of bytes to write
     ldy #$00
-:   lda (ppu_write_ptr),y
+@loop:
+    lda (ppu_write_ptr),y
     sta $2007
-    iny
-    dex
-    bne :-
+    inc ppu_write_ptr
+    bne :+
+    inc ppu_write_ptr+1
+:   dec ppu_write_cnt
+    bne @loop
+    dec ppu_write_cnt+1
+    bne @loop
     rts
 
 .segment "RODATA"
