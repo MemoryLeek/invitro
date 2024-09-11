@@ -3,8 +3,10 @@ offset: .res 1
 ptr: .res 2
 tmp: .res 1
 
-.segment "RODATA"
-text: .asciiz " Hello, World! This is a scrolling text demo. Watch the text go. See how it scrolls. Isn't it lame?"
+.segment "SCROLLER" ; Nice hack if I say so myself, putting it last and having it zero-filled so I don't have to bother ending it
+text:
+    .res 32 ; Padding so the text starts off screen, I'm lazy like that
+    .asciiz " Hello, World! This is a scrolling text demo. Watch the text go. See how it scrolls. Isn't it lame?"
 
 .segment "CODE"
 .import sprites

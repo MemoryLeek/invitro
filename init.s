@@ -52,13 +52,24 @@ reset:
     ; Wait for second vblank
 :   bit $2002
     bpl :-
+    ; Set up the background palette
+    lda #$3f
+    sta $2006
+    lda #$00
+    sta $2006
+    ldx #$00
+:   lda palette_invitro_a,x
+    sta $2007
+    inx
+    cpx #$10 ; 16 bytes in the palette
+    bne :-
     ; Set up the sprite palette
     lda #$3f
     sta $2006
     lda #$10
     sta $2006
     ldx #$00
-:   lda palette_invitro_a, x
+:   lda palette_invitro_a,x
     sta $2007
     inx
     cpx #$10 ; 16 bytes in the palette
@@ -66,7 +77,7 @@ reset:
     jmp main
 
 .import famistudio_update
-.importzp frame
+.importzp scroll_x, scroll_y, frame
 nmi:
     pha
     txa
@@ -78,6 +89,12 @@ nmi:
     sta $2003
     lda #.hibyte(sprites)
     sta $4014
+    ; Reset scroll - this must ALWAYS be done after ANY write to $2006
+    bit $2002
+    lda scroll_x
+    sta $2005
+    lda scroll_y
+    sta $2005
     ; Run the music engine
     jsr famistudio_update
     ; Increment frame counter
