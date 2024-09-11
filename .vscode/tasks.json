@@ -1,0 +1,27 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build",
+			"type": "shell",
+			"command": "make",
+			"problemMatcher": [
+				"$ca65",
+				"$ld65"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Clean",
+			"type": "shell",
+			"problemMatcher": [],
+			"command": "make clean",
+			"group": {
+				"kind": "none"
+			}
+		}
+	]
+}
