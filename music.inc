@@ -45,7 +45,7 @@ music_data_untitled:
 	.byte $91, $20, $a5, $1f, $a5, $1d, $91, $1b, $91, $1d, $91, $1f, $91, $1d, $e1, $48
 	.byte $41, $1e
 	.word @song0ref2
-	.byte $23, $91, $22, $91, $20, $91, $22, $a5, $1f, $a5, $1b, $91
+	.byte $23, $91, $22, $91, $20, $91, $22, $a5, $20, $a5, $1b, $91
 @song0ch0loop:
 	.byte $47, .lobyte(@tempo_env_1_mid), .hibyte(@tempo_env_1_mid)
 	.byte $41, $26
