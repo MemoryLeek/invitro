@@ -5,8 +5,12 @@ tmp: .res 1
 
 .segment "SCROLLER" ; Nice hack if I say so myself, putting it last and having it zero-filled so I don't have to bother ending it
 text:
-    .res 32 ; Padding so the text starts off screen, I'm lazy like that
-    .asciiz " Hello, World! This is a scrolling text demo. Watch the text go. See how it scrolls. Isn't it lame?"
+    .res 36 ; Padding so the text starts off screen, I'm lazy like that
+    .asciiz "Brown Birdie Crew is back again with another low effort invitro. "
+    .asciiz "At least its on an actual oldskool platform this time... "
+    .asciiz "As you read this you feel a sudden urge to visit H|lsingland. "
+    .asciiz "Competitions, beer, and good company. "
+    .asciiz "The sauna will be hot, the lake will be cold, the sun will shine. "
 
 .segment "CODE"
 .import sprites

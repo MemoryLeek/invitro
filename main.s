@@ -23,9 +23,9 @@ main:
     sta ppu_write_ptr
     lda #.hibyte(screen0)
     sta ppu_write_ptr+1
-    lda #.lobyte($400)
+    lda #.lobyte($800)
     sta ppu_write_cnt
-    lda #.hibyte($600)
+    lda #.hibyte($800)
     sta ppu_write_cnt+1
     ldx #.lobyte($2000)
     ldy #.hibyte($2000)

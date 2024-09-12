@@ -29,11 +29,12 @@ ppu_write:
 .segment "RODATA"
 .export palette_invitro_a, screen0
 palette_invitro_a:
-    .byte $07,$00,$10,$37
-    .byte $07,$0c,$21,$30
-    .byte $07,$05,$16,$0f
-    .byte $07,$0b,$1a,$29
+    .byte $11,$00,$10,$30
+    .byte $11,$0c,$21,$30
+    .byte $11,$05,$30,$0f
+    .byte $11,$0b,$1a,$29
 screen0:
+    .incbin "assets/scr0.nam"
     .incbin "assets/scr0.nam"
 
 .segment "GRAPHICS"
