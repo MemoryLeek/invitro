@@ -1,6 +1,6 @@
 .include "third-party/nes2header.inc"
 nes2mapper 0 ; NROM
-nes2prg 32768 ; NROM-256
+nes2prg 16384 ; NROM-128
 nes2chr 8192
 nes2mirror 'V'
 nes2tv 'P'
