@@ -70,6 +70,8 @@ scrolltext_update:
     ldx #$81 ; Use the last 32 sprites, byte 1 is the tile index
     ldy #$00 ; Used as pointer offset
 :   lda (ptr),y
+    clc
+    adc #$80
     sta sprites,x
     inx
     inx
@@ -90,6 +92,7 @@ scrolltext_update:
 :   rts
 
 .segment "RODATA"
+.export sin_lut
 sin_lut:
     .byte $20 ,$20 ,$21 ,$22 ,$23 ,$23 ,$24 ,$25 ,$26 ,$27 ,$27 ,$28 ,$29 ,$2a ,$2a ,$2b
     .byte $2c ,$2c ,$2d ,$2e ,$2f ,$2f ,$30 ,$31 ,$31 ,$32 ,$33 ,$33 ,$34 ,$34 ,$35 ,$36

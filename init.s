@@ -12,7 +12,7 @@ nes2end
 .word irq
 
 .segment "CODE"
-.import main, sprites, palette_invitro_a
+.import main, sprites, palette_invitro_a, palette_invitro_b
 reset:
     sei
     cld
@@ -69,7 +69,7 @@ reset:
     lda #$10
     sta $2006
     ldx #$00
-:   lda palette_invitro_a,x
+:   lda palette_invitro_b,x
     sta $2007
     inx
     cpx #$10 ; 16 bytes in the palette
