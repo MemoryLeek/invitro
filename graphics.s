@@ -27,7 +27,7 @@ ppu_write:
     rts
 
 .segment "RODATA"
-.export palette_invitro_a, palette_invitro_b, screen0
+.export palette_invitro_a, palette_invitro_b, palette_invitro_c, screen0, end_screen
 palette_invitro_a:
     .byte $11,$00,$10,$30
     .byte $11,$0c,$21,$30
@@ -38,9 +38,17 @@ palette_invitro_b:
     .byte $11,$16,$2d,$10
     .byte $11,$16,$21,$37
     .byte $11,$16,$21,$10
+palette_invitro_c:
+    .byte $0f,$07,$26,$30
+    .byte $0f,$15,$26,$37
+    .byte $0f,$16,$27,$37
+    .byte $0f,$19,$28,$38
 screen0:
     .incbin "assets/scr0.nam"
     .incbin "assets/scr1.nam"
+end_screen:
+    .incbin "assets/end.nam"
 
 .segment "GRAPHICS"
 .incbin "assets/chr0.chr"
+.incbin "assets/chr1.chr"

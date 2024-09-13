@@ -67,7 +67,7 @@ main:
     lda frame
     cmp #$28
     bne :+
-    jmp endscreen
+    jmp endscene
 :   lda frame
     and #$07
     bne @end
@@ -219,11 +219,43 @@ partymobile:
     bne :-
     rts
 
-endscreen:
+.import end_screen, palette_invitro_c
+endscene:
     ; Disable rendering
     lda #%00000000
     lda #$00
     sta $2000
+    sta $2001
+    lda #.lobyte(end_screen)
+    sta ppu_write_ptr
+    lda #.hibyte(end_screen)
+    sta ppu_write_ptr+1
+    lda #.lobyte($400)
+    sta ppu_write_cnt
+    lda #.hibyte($400)
+    sta ppu_write_cnt+1
+    ldx #.lobyte($2000)
+    ldy #.hibyte($2000)
+    jsr ppu_write
+    lda #$00
+    sta scroll_x
+    sta scroll_x+1
+    ; Write end-screen palette
+    lda #$3f
+    sta $2006
+    lda #$00
+    sta $2006
+    ldx #$00
+:   lda palette_invitro_c,x
+    sta $2007
+    inx
+    cpx #$10 ; 16 bytes in the palette
+    bne :-
+    ; Re-enable rendering
+    bit $2002
+    lda #%10010000
+    sta $2000
+    lda #%00001110
     sta $2001
 @loop:
     jmp @loop

@@ -42,15 +42,13 @@ scrolltext_update:
 :   pha
     clc
     adc offset
+    clc
+    sbc frame
     tay
     lda sin_lut,y ; Per-letter sine wave
-    sta tmp
-    lda frame
-    tay
-    lda sin_lut,y ; Add global sine wave
     asl
     clc
-    adc tmp
+    adc #$20
     sta sprites,x ; Byte 0 is the Y position
     pla
     inx
