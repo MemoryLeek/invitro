@@ -1,6 +1,8 @@
 # Brown Birdie 2024 Invitro
 
-NES invitro for Brown Birdie 2024
+NES (PAL) invitro for Brown Birdie 2024.
+
+[Watch on YouTube](https://www.youtube.com/watch?v=-NUmeKxQrZc)
 
 ![Screenshot](.github/end_screen.png)
 
